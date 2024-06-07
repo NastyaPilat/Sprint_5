@@ -1,5 +1,7 @@
 import pytest
 from selenium import webdriver
+import random
+import string
 
 
 @pytest.fixture
@@ -9,9 +11,5 @@ def driver():
     driver.quit()
 
 @pytest.fixture
-def base_url():
-    return "https://stellarburgers.nomoreparties.site/"
-
-@pytest.fixture
-def credentials():
-    return { 'name': 'test_user', 'email': 'test@domain.ru', 'password': 'test_password' }
+def random_email():
+    return ''.join(random.choices(string.ascii_letters, k=6)) + '@domain.ru'
